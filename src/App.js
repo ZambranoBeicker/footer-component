@@ -1,7 +1,10 @@
+import Footer from "./Footer"
+
 function App() {
+
   return (
     <>
-      <p>Hello world</p>
+      <Footer />
     </>
   );
 }

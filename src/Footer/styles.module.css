@@ -1,0 +1,28 @@
+.Wrapper {
+  background: #005e90;
+  color: white;
+  padding: 3.75rem 0.625rem;
+  font-family: Arial;
+}
+
+.title {
+  font-size: 1.125rem;
+  margin: 0;
+  margin-bottom: 1rem;
+}
+
+.list {
+  list-style: none;
+  color: white;
+  padding: 0;
+}
+
+.link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.image {
+  width: 70%;
+}
