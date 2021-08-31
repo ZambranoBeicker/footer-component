@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, Fragment } from "react";
 import styles from "./styles.module.css";
 import "keen-slider/keen-slider.min.css";
 import { useKeenSlider } from "keen-slider/react";
@@ -16,31 +16,92 @@ export default function Footer({ services, images, sliderImages }) {
 
   return (
     <>
-      <div className={styles.Wrapper}>
-        {services.map((service) => {
-          return (
-            <div>
-              <h5 className={styles.title}>{service.title}</h5>
-              <ul className={styles.list}>
-                {service.links.map((link) => (
-                  <a className={styles.link} href={link.url}>
-                    {link.value}
-                  </a>
-                ))}
-              </ul>
-            </div>
-          );
-        })}
-        {images.map((image) => (
-          <div>
-            <img className={styles.image} src={image} />
-          </div>
-        ))}
+      <div className={styles.wrapper}>
+        <div className={styles["services-container"]}>
+          {services.map((service, index) => {
+            if (service.desktop === false && window.innerWidth >= 1024) return;
+            if (service.desktop === true && window.innerWidth < 1024) return;
+            if (Array.isArray(service)) {
+              return (
+                <div key={index + styles.wrapper}>
+                  {service.map((item, index) => (
+                    <div key={index + item.title + styles.wrapper}>
+                      <h5 className={styles.title}>{item.title}</h5>
+                      <ul className={styles.list}>
+                        {item.links.map((link, index) => (
+                          <a
+                            key={index + link.url + styles.link}
+                            className={styles.link}
+                            href={link.url}
+                          >
+                            {link.value}
+                          </a>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              );
+            }
+            return (
+              <div>
+                <h5 className={styles.title}>{service.title}</h5>
+                <ul className={styles.list}>
+                  {service.links.map((link, index) => (
+                    <a
+                      key={index + link.url}
+                      className={styles.link}
+                      href={link.url}
+                    >
+                      {link.value}
+                    </a>
+                  ))}
+                </ul>
+              </div>
+            );
+          })}
+        </div>
+        <div className={styles["images-container"]}>
+          {images.map((image) => {
+            if (image.desktop === false && window.innerWidth >= 1024) return;
+            if (image.desktop === true && window.innerWidth < 1024) return;
+            if (image.links === true) {
+              return (
+                <div className={styles["social-links"]}>
+                  <img className={styles.image} src={image.src} />
+                  <div>
+                    <div className={styles.icon}>
+                      <i className="fab fa-facebook-f"></i>
+                    </div>
+                    <div className={styles.icon}>
+                      <i className="fab fa-twitter"></i>
+                    </div>
+                    <div className={styles.icon}>
+                      <i className="fab fa-youtube"></i>
+                    </div>
+                    <div className={styles.icon}>
+                      <i className="fab fa-instagram"></i>
+                    </div>
+                    <div className={styles.icon}>
+                      <i className="fab fa-linkedin-in"></i>
+                    </div>
+                  </div>
+                </div>
+              );
+            }
+            return (
+              <div>
+                <img className={styles.image} src={image.src} />
+              </div>
+            );
+          })}
+        </div>
       </div>
-      <div className="navigation-wrapper">
+      <div className={`navigation-wrapper ${styles["desktop-hidden"]}`}>
         <div ref={sliderRef} className={`keen-slider ${styles.slider}`}>
           {sliderImages.map((image, index) => (
             <div
+              key={index + image}
               className={`keen-slider__slide number-slide${index + 1} ${
                 styles.logo
               }`}
@@ -61,6 +122,13 @@ export default function Footer({ services, images, sliderImages }) {
             </>
           )}
         </div>
+      </div>
+      <div className={styles.slider}>
+        {sliderImages.map((image, index) => (
+          <div key={index + image + styles.logo} className={styles.logo}>
+            <img src={image} />
+          </div>
+        ))}
       </div>
     </>
   );
