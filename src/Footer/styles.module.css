@@ -24,7 +24,7 @@
 }
 
 .image {
-  width: 70%;
+  width: 65%;
 }
 
 .logo {
@@ -32,24 +32,29 @@
 }
 
 .arrow {
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   position: absolute;
-  top: 30%;
+  top: 40%;
   transform: rotate(0deg);
   fill: #fff;
   cursor: pointer;
 }
 
 .arrow--left {
-  left: 5px;
+  left: 20%;
 }
 
 .arrow--right {
   left: auto;
-  right: 5px;
+  right: 20%;
 }
 
 .arrow--disabled {
   fill: rgba(255, 255, 255, 0.5);
+}
+
+.slider {
+  background: #333;
+  padding: 1.875rem;
 }

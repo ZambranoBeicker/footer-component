@@ -13,38 +13,40 @@ export default function Footer() {
   });
 
   return (
-    <div className={styles.Wrapper}>
-      <div>
-        <h5 className={styles.title}>UNIVERSIDAD</h5>
-        <ul className={styles.list}>
-          <a className={styles.link} href="#">
-            Ta ta ta
-          </a>
-          <a className={styles.link} href="#">
-            Ta ta ta
-          </a>
-          <a className={styles.link} href="#">
-            Ta ta ta
-          </a>
-          <a className={styles.link} href="#">
-            Ta ta ta
-          </a>
-          <a className={styles.link} href="#">
-            Ta ta ta
-          </a>
-          <a className={styles.link} href="#">
-            Ta ta ta
-          </a>
-        </ul>
-      </div>
-      <div>
-        <img
-          className={styles.image}
-          src="https://vrea.usm.cl/wp-content/uploads//2021/06/logo-acreditacion_blanco.svg"
-        />
+    <>
+      <div className={styles.Wrapper}>
+        <div>
+          <h5 className={styles.title}>UNIVERSIDAD</h5>
+          <ul className={styles.list}>
+            <a className={styles.link} href="#">
+              Ta ta ta
+            </a>
+            <a className={styles.link} href="#">
+              Ta ta ta
+            </a>
+            <a className={styles.link} href="#">
+              Ta ta ta
+            </a>
+            <a className={styles.link} href="#">
+              Ta ta ta
+            </a>
+            <a className={styles.link} href="#">
+              Ta ta ta
+            </a>
+            <a className={styles.link} href="#">
+              Ta ta ta
+            </a>
+          </ul>
+        </div>
+        <div>
+          <img
+            className={styles.image}
+            src="https://vrea.usm.cl/wp-content/uploads//2021/06/logo-acreditacion_blanco.svg"
+          />
+        </div>
       </div>
       <div className="navigation-wrapper">
-        <div ref={sliderRef} className="keen-slider">
+        <div ref={sliderRef} className={`keen-slider ${styles.slider}`}>
           <div className={`keen-slider__slide number-slide1 ${styles.logo}`}>
             <img src="https://vrea.usm.cl/wp-content/uploads/2021/04/logo_reuna.svg" />
           </div>
@@ -65,7 +67,7 @@ export default function Footer() {
           )}
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
