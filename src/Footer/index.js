@@ -3,56 +3,51 @@ import styles from "./styles.module.css";
 import "keen-slider/keen-slider.min.css";
 import { useKeenSlider } from "keen-slider/react";
 
-export default function Footer() {
+export default function Footer({ services, images, sliderImages }) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [sliderRef, slider] = useKeenSlider({
     initial: 0,
     slideChanged(s) {
       setCurrentSlide(s.details().relativeSlide);
     },
+    centered: true,
+    spacing: 100,
   });
 
   return (
     <>
       <div className={styles.Wrapper}>
-        <div>
-          <h5 className={styles.title}>UNIVERSIDAD</h5>
-          <ul className={styles.list}>
-            <a className={styles.link} href="#">
-              Ta ta ta
-            </a>
-            <a className={styles.link} href="#">
-              Ta ta ta
-            </a>
-            <a className={styles.link} href="#">
-              Ta ta ta
-            </a>
-            <a className={styles.link} href="#">
-              Ta ta ta
-            </a>
-            <a className={styles.link} href="#">
-              Ta ta ta
-            </a>
-            <a className={styles.link} href="#">
-              Ta ta ta
-            </a>
-          </ul>
-        </div>
-        <div>
-          <img
-            className={styles.image}
-            src="https://vrea.usm.cl/wp-content/uploads//2021/06/logo-acreditacion_blanco.svg"
-          />
-        </div>
+        {services.map((service) => {
+          return (
+            <div>
+              <h5 className={styles.title}>{service.title}</h5>
+              <ul className={styles.list}>
+                {service.links.map((link) => (
+                  <a className={styles.link} href={link.url}>
+                    {link.value}
+                  </a>
+                ))}
+              </ul>
+            </div>
+          );
+        })}
+        {images.map((image) => (
+          <div>
+            <img className={styles.image} src={image} />
+          </div>
+        ))}
       </div>
       <div className="navigation-wrapper">
         <div ref={sliderRef} className={`keen-slider ${styles.slider}`}>
-          <div className={`keen-slider__slide number-slide1 ${styles.logo}`}>
-            <img src="https://vrea.usm.cl/wp-content/uploads/2021/04/logo_reuna.svg" />
-          </div>
-          <div className={`keen-slider__slide number-slide2 ${styles.logo}`}>
-            <img src="https://vrea.usm.cl/wp-content/uploads/2021/04/logo_reuna.svg" />
-          </div>
+          {sliderImages.map((image, index) => (
+            <div
+              className={`keen-slider__slide number-slide${index + 1} ${
+                styles.logo
+              }`}
+            >
+              <img src={image} />
+            </div>
+          ))}
           {slider && (
             <>
               <ArrowLeft

@@ -25,10 +25,18 @@
 
 .image {
   width: 65%;
+  margin-top: 1rem;
 }
 
 .logo {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.logo > img {
+  display: block;
+  height: auto;
+  max-width: 80%;
 }
 
 .arrow {
@@ -42,12 +50,12 @@
 }
 
 .arrow--left {
-  left: 20%;
+  left: 5%;
 }
 
 .arrow--right {
   left: auto;
-  right: 20%;
+  right: 5%;
 }
 
 .arrow--disabled {
@@ -56,5 +64,5 @@
 
 .slider {
   background: #333;
-  padding: 1.875rem;
+  padding: 1.875rem 0;
 }
